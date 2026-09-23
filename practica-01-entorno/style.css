@@ -1,0 +1,22 @@
+h1{
+    color: rgb(50, 5, 49);
+    font-size: 80px;
+    font-family: MONTSERRAT, sans-serif;
+}
+.noticias h2{
+    color: rgb(55, 138, 36);
+    font-size: 60px;
+    font-family: MONTSERRAT, sans-serif;
+}
+#titulo1{
+    color: rgb(42, 18, 140);
+    font-size: 30px;
+    font-family: MONTSERRAT, sans-serif;
+}
+.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid #4CAF50;
+    margin: 25px;
+    background-color: #e3f2fd;
+}
