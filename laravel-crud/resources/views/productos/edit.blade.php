@@ -19,6 +19,7 @@
         @enderror
     </div>
 
+    {{-- ✅ DESCRIPCIÓN --}}
     <div class="mb-3">
         <label for="descripcion" class="form-label">Descripción</label>
         <textarea name="descripcion" id="descripcion" rows="3"
@@ -35,9 +36,11 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+        
+        {{-- ✅ CANTIDAD --}}
         <div class="col-md-6">
             <label for="cantidad" class="form-label">Cantidad</label>
-            <input type="number" name="cantidad" id="cantidad"
+            <input type="number" name="cantidad" id="cantidad" min="1"
                    value="{{ old('cantidad', $producto->cantidad) }}"
                    class="form-control @error('cantidad') is-invalid @enderror">
             @error('cantidad')

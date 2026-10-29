@@ -14,9 +14,9 @@ return new class extends Migration
     Schema::create('productos', function (Blueprint $table) {
         $table->id();
         $table->string('nombre');
-        $table->text('descripcion')->nullable();
+        $table->text('descripcion')->nullable(); // ✅ Puede estar vacía
         $table->decimal('precio', 8, 2);
-        $table->integer('cantidad');
+        $table->integer('cantidad'); // ✅ Número entero
         $table->timestamps();
     });
 }

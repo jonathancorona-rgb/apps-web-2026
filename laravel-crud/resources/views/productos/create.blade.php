@@ -18,25 +18,29 @@
         @enderror
     </div>
 
+    {{-- ✅ DESCRIPCIÓN: SIN obligatorio --}}
     <div class="mb-3">
         <label for="descripcion" class="form-label">Descripción</label>
         <textarea name="descripcion" id="descripcion" rows="3"
                   class="form-control">{{ old('descripcion') }}</textarea>
+        {{-- Sin mensaje de error porque NO es obligatoria --}}
     </div>
 
     <div class="row mb-3">
         <div class="col-md-6">
             <label for="precio" class="form-label">Precio</label>
-            <input type="number" step="0.01" name="precio" id="precio"
+            <input type="number" name="precio" id="precio" step="0.01" min="0"
                    value="{{ old('precio') }}"
                    class="form-control @error('precio') is-invalid @enderror">
             @error('precio')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+        
+        {{-- ✅ CANTIDAD: solo números enteros --}}
         <div class="col-md-6">
             <label for="cantidad" class="form-label">Cantidad</label>
-            <input type="number" name="cantidad" id="cantidad"
+            <input type="number" name="cantidad" id="cantidad" min="1"
                    value="{{ old('cantidad') }}"
                    class="form-control @error('cantidad') is-invalid @enderror">
             @error('cantidad')

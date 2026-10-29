@@ -33,12 +33,17 @@ class ProductoController extends Controller
 {
     $validated = $request->validate([
         'nombre' => 'required|string|min:3|max:255',
+        'descripcion' => 'nullable|string',  // ✅ Puede quedar vacía
         'precio' => 'required|numeric|min:0',
-        'cantidad' => 'required|integer|min:1',
+        'cantidad' => 'required|integer|min:1', // ✅ Número entero mayor a 0
     ], [
         'nombre.required' => 'El nombre es obligatorio.',
         'nombre.min' => 'El nombre debe tener al menos 3 caracteres.',
+        'precio.required' => 'El precio es obligatorio.',
         'precio.numeric' => 'El precio debe ser un número.',
+        'cantidad.required' => 'La cantidad es obligatoria.',
+        'cantidad.integer' => 'La cantidad debe ser un número entero.',
+        'cantidad.min' => 'La cantidad debe ser al menos 1.',
     ]);
 
     Producto::create($validated);
@@ -52,10 +57,11 @@ class ProductoController extends Controller
 
     public function update(Request $request, Producto $producto)
 {
-   $validated = $request->validate([
+    $validated = $request->validate([
     'nombre' => 'required|string|min:3|max:255',
+    'descripcion' => 'nullable|string', // ✅ NO es obligatoria
     'precio' => 'required|numeric|min:0',
-    'cantidad' => 'required|integer|min:1',
+    'cantidad' => 'required|integer|min:1', // ✅ Entero, mínimo 1
 ], [
     'nombre.required' => 'El nombre es obligatorio.',
     'nombre.min' => 'El nombre debe tener al menos 3 caracteres.',
@@ -63,6 +69,7 @@ class ProductoController extends Controller
     'precio.numeric' => 'El precio debe ser un número.',
     'cantidad.required' => 'La cantidad es obligatoria.',
     'cantidad.integer' => 'La cantidad debe ser un número entero.',
+    'cantidad.min' => 'La cantidad debe ser al menos 1.',
 ]);
 
     $producto->update($validated);
